@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Header = () => {
+const Chatroom = () => {
   return (
     <div>
-      Header
+      Chat
     </div>
   );
-}
+};
 
-export default Header;
+export default Chatroom;

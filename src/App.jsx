@@ -1,12 +1,28 @@
 import React from 'react';
-import HomePage from './components/HomePage';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import GlobePage from './pages/GlobePage';
+import ShopPage from './pages/ShopPage';
+
 
 const App = () => {
   return (
-    <div>
-      <HomePage />
-    </div>
+    <Router>
+      
+      <Switch>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+        <Route path="/globe">
+          <GlobePage />
+        </Route>
+        <Route path="/shop">
+          <ShopPage />
+        </Route>        
+      </Switch>
+      
+    </Router>
   );
-}
+};
 
 export default App;

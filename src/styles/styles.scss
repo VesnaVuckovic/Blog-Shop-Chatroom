@@ -1,0 +1,64 @@
+@import 'variables';
+@import 'mixins';
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    border-style: solid;    
+  }
+  
+  .header {
+    @include flex(space-around, center);
+    width: 100%;
+    height: 10%vh;
+    border-style: solid;
+    padding: 10px;  
+  }
+  
+  .footer {
+    @include flex(space-around, center);
+    width: 100%;
+    height: 10%;
+    border-style: solid;
+    padding: 10px;  
+  }
+  
+  .globe-container {
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+    border-style: solid;  
+  }
+  
+  .main-container {
+    width: 100%;
+    height: 30vh; 
+    @include flex(space-evenly, flex-start);  
+  }
+  
+  .shop-container {
+    @include flex(space-around, center);
+    width: 70%;
+    height: 100%; 
+    border-style: solid;
+    
+  }
+  
+  .chatroom-container {
+    @include flex(space-around, center);
+    width: 30%;
+    height: 100%;
+    border-style: solid;
+  }
+  
