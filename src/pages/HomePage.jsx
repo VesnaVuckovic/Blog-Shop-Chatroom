@@ -2,24 +2,18 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Globe from './GlobePage';
-import Shop from './ShopPage';
 import Chatroom from '../components/Chatroom';
+import ShopPage from './ShopPage';
+
 
 const HomePage = () => {
   return (
     <div className='wrapper'>
-
       <Header />
-
-      <div className="globe-container"><Globe /></div>
-           
-      <div class="main-container">        
-        <div className="shop-container"><Shop /></div>
-        <div className="chatroom-container"><Chatroom /></div>
-      </div>
-
+      <div className="globe-container"><Globe /></div>        
+      <div className="shop-container"><ShopPage /></div>
+      <div className="chatroom-container"><Chatroom /></div>
       <Footer />
-
     </div>
   );
 }

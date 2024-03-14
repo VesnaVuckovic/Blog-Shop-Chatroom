@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import GlobePage from './pages/GlobePage';
 import ShopPage from './pages/ShopPage';
+import ShopHome from '../src/components/shop/src/pages/Home';
+
 
 
 const App = () => {
@@ -18,7 +20,10 @@ const App = () => {
         </Route>
         <Route path="/shop">
           <ShopPage />
-        </Route>        
+        </Route>
+        <Route path="/home">
+          <ShopHome />
+        </Route>            
       </Switch>
       
     </Router>
