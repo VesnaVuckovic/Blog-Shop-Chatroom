@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux"
 import { toglleCartOpen, increment, decrement,deleteItem,deleteAll } from "../store/reducer/cartSlice"
+import { calculatePromoPrice } from "../store/utils/calculatePrice";
 
 const Cart = () => {
     const { isOpen, cartItems } = useSelector(state => state.cart);
@@ -27,6 +28,12 @@ const Cart = () => {
         dispatch(deleteItem(id));
     }
 
+    const total = cartItems.reduce(function(acc, item) {
+        const displayPrice = calculatePromoPrice(item.regularPrice, item.promoDiscount);
+        const subtotal = displayPrice * item.quantity;
+        return acc + subtotal;
+    }, 0);
+
     return (
         <>
             {isOpen && (
@@ -40,26 +47,29 @@ const Cart = () => {
                             (
                                 <div>
                                     {cartItems.map(item => {
-                                        const { id, image, type, price, quantity } = item;
+                                        const { id, image, typeName, colorName, regularPrice, quantity, } = item;                                        
+                                        const displayPrice = calculatePromoPrice(item.regularPrice, item.promoDiscount);
+                                        console.log(`Item: ${typeName} ${colorName}, Quantity: ${quantity}, Display Price: ${displayPrice}`);
+                                        console.log("Subtotal: ", quantity * displayPrice);                                                                        
                                         return (
                                             <div className="cart-items" key={id}>
                                                 <figure className="cart_img">
-                                                    <img src={image} alt={type} />
+                                                    <img src={image.src} alt={image.alt} />
                                                 </figure>
-                                                <div className="cart_item_type">{type}</div>
-                                                <div className="cart_item_price">{price}</div>
+                                                <div className="cart_item_type">{typeName} {colorName}</div>
+                                                <div className="cart_item_price">{displayPrice} EUR</div>                                               
                                                 <div className="quantity">
-                                                    <span className="qua" onClick={() => handleIncerement(id)}>+</span>
-                                                    {quantity}
-                                                    <span className="qua" onClick={() => handleDecrement(id)}>-</span>
+                                                    <span className="qty" onClick={() => handleIncerement(id)}>+</span>
+                                                    {quantity} 
+                                                    <span className="qty" onClick={() => handleDecrement(id)}>-</span>
                                                 </div>
                                                 <div className="danger" onClick={()=>handleDeleteItem(id)}>
                                                     &times;
                                                 </div></div>
                                         )
 
-                                    })}
-                                    <p className="total">Total: {cartItems.reduce((a,b)=>a+b.price*b.quantity,0)} </p>
+                                    })}                                    
+                                    <p className="total">Total: {total} EUR</p>                                    
                                     <p className="linkD" onClick={()=>handleDeleteAll()}>Delete all</p>
                                 </div>
                             )}              

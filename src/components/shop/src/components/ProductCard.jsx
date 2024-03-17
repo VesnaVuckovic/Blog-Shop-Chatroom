@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../store/reducer/cartSlice";
+import { calculatePromoPrice } from "../store/utils/calculatePrice";
 
 const ProductCard = (props) => {
     const {cartItems} = useSelector(state => state.cart);
@@ -7,20 +8,10 @@ const ProductCard = (props) => {
     const { id, image, regularPrice, promoDiscount, inStock, typeName, colorName } = props;
     
     const handleAddCart = () => {
-        const item = { ...props };
+        const item = { ...props, quantity: 1 };
         dispatch(addItem(item));
     }
-
-    const calculatePromoPrice = () => {
-        if ((promoDiscount) !== 0) {
-            const discountAmount = ((regularPrice) * (promoDiscount)) / 100;
-            return parseFloat((regularPrice) - discountAmount).toFixed(2);
-        } else {
-            return regularPrice;
-        }
-    };     
-    const promoPrice = parseFloat(calculatePromoPrice());
-             
+    const promoPrice = calculatePromoPrice(regularPrice, promoDiscount);              
     return (
         <div className="product_card">
             <figure>
