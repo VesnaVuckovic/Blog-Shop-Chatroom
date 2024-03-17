@@ -1,8 +1,8 @@
-const inititalState = {
+const initialState = {
     count: 0
 }
 
-const reducer = (state = inititalState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'decrease':
             return {

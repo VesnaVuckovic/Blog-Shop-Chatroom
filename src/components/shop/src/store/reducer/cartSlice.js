@@ -65,7 +65,7 @@ const cartSlice = createSlice({
             const id = action.payload;
 
            const index=state.cartItems.findIndex(elem=>parseInt(elem.id)===parseInt(id));
-               
+
            state.cartItems.splice(index,1);
 
         },

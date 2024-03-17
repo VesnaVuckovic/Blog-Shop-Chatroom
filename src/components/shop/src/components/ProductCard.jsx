@@ -10,9 +10,17 @@ const ProductCard = (props) => {
         const item = { ...props };
         dispatch(addItem(item));
     }
-    const promoPrice = parseFloat(promoDiscount) > 0 ? (regularPrice * (100 - parseFloat(promoDiscount))) / 100 : regularPrice;
-    console.log(promoPrice)     
-     
+
+    const calculatePromoPrice = () => {
+        if ((promoDiscount) !== 0) {
+            const discountAmount = ((regularPrice) * (promoDiscount)) / 100;
+            return parseFloat((regularPrice) - discountAmount).toFixed(2);
+        } else {
+            return regularPrice;
+        }
+    };     
+    const promoPrice = parseFloat(calculatePromoPrice());
+             
     return (
         <div className="product_card">
             <figure>
@@ -26,13 +34,19 @@ const ProductCard = (props) => {
                 </div>
 
                 <div className="price"> 
-                    <h2>Price: <del>{regularPrice} EUR</del></h2>
-                    {promoDiscount > 0 && (
-                    <h2>Promo price: {promoPrice} EUR</h2>
+                    {promoDiscount === 0 ? (
+                        <>
+                        Price: {regularPrice} EUR</>
+                        ) : (
+                        <>
+                        {promoDiscount > 0 && promoPrice !== regularPrice && (
+                        <del>Price: {regularPrice} EUR</del>
+                        )}<br />
+                        Promo: {promoPrice} EUR
+                        </>
                     )}
                 </div>
-            </div>
-            
+            </div>            
 
             {cartItems.some(elem => elem.id === id) ? (
                 <button className="btn" disabled>Added to cart</button>

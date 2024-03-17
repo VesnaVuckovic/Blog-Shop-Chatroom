@@ -15,7 +15,7 @@ const dispatch=useDispatch();
                     <h1>Souvenir Shop</h1>
                     <div className="nav_menu">
                         <div className="cart-icon" onClick={handleOpenCart}>
-                            <img src="./images/bag-icon.svg" alt="bags" />
+                            <img src='src/components/shop/public/images/baggageicon.ico' alt="bags" />
                             <div className="badge">{counter}</div>
                         </div>
                     </div>

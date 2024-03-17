@@ -60,7 +60,7 @@ const Cart = () => {
 
                                     })}
                                     <p className="total">Total: {cartItems.reduce((a,b)=>a+b.price*b.quantity,0)} </p>
-                        <p className="linkD" onClick={()=>handleDeleteAll()}>Delete all</p>
+                                    <p className="linkD" onClick={()=>handleDeleteAll()}>Delete all</p>
                                 </div>
                             )}              
                     </div>

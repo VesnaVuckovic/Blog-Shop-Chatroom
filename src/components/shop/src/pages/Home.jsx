@@ -43,7 +43,8 @@ const Home = () => {
                                 title={elem.image.alt}
                                 typeName={getElementNameById(types, elem.type)}
                                 colorName={getElementNameById(colors, elem.color)}
-                                regularPrice={elem.price.regularPrice}                                
+                                regularPrice={elem.price.regularPrice}
+                                promoDiscount={elem.price.promoDiscount}                                
                                 promoPrice={elem.promoPrice}
                                 {...elem}
                             />

@@ -10,8 +10,8 @@ const HomePage = () => {
   return (
     <div className='wrapper'>
       <Header />
-      <div className="globe-container"><Globe /></div>        
-      <div className="shop-container"><ShopPage /></div>
+      <div className="globe-container"><Globe /></div>            
+      <div className="shop-container"><h1>Souvenir Shop</h1><ShopPage /></div>
       <div className="chatroom-container"><Chatroom /></div>
       <Footer />
     </div>

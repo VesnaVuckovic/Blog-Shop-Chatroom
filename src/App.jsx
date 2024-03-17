@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import GlobePage from './pages/GlobePage';
 import ShopPage from './pages/ShopPage';
-import ShopHome from '../src/components/shop/src/pages/Home';
+import HomeShop from './components/shop/src/index';
 
 
 
@@ -21,9 +21,9 @@ const App = () => {
         <Route path="/shop">
           <ShopPage />
         </Route>
-        <Route path="/home">
-          <ShopHome />
-        </Route>            
+        <Route path="/HomeShop">
+          <HomeShop />
+        </Route>               
       </Switch>
       
     </Router>

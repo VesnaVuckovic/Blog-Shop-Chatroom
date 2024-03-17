@@ -1,10 +1,9 @@
 @import 'variables';
 @import 'mixins';
 
-
 body {
   font-family: Arial, sans-serif;
-  background-color: white
+  background-color: white;
 }
 
 .wrapper {
@@ -13,8 +12,7 @@ body {
     margin: auto;        
   }
   
-  .header {
-    @include flex(space-around, center);
+  .header {    
     width: 100%;
     height: 20vh;    
     padding: 10px;  
@@ -33,7 +31,7 @@ body {
     height: 100vh;
     overflow: hidden; 
   }
-  
+
   .shop-container {
     display: flex;
     width: 100%;
