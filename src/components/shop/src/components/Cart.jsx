@@ -1,11 +1,32 @@
+import React, { useState } from 'react';
+import { addItem } from '../store/reducer/cartSlice';
 import { useSelector, useDispatch } from "react-redux"
 import { toglleCartOpen, increment, decrement,deleteItem,deleteAll } from "../store/reducer/cartSlice"
 import { calculatePromoPrice } from "../store/utils/calculatePrice";
+import LoginPopup from '../../../registration/LoginPopup';
 
 const Cart = () => {
     const { isOpen, cartItems } = useSelector(state => state.cart);
     const numberOfItems = cartItems.length;
     const dispatch = useDispatch();
+    const { isLoggedIn } = useSelector(state => state.auth) || {};
+    const [isPopupOpen, setIsPopupOpen] = useState(true);
+    
+    const openPopup = () => {
+        setIsAddToCartClicked(true);
+    };
+    
+    const closePopup = () => {
+        setIsAddToCartClicked(false);
+    };
+
+    const handleAddToCart = () => {
+        if (!isLoggedIn) {
+            dispatch({ type: OPEN_POPUP });
+            return;
+        }
+        dispatch(addItem({ id: itemId, quantity: 1, ...otherItemData }));
+    };
 
     const handleOpenCart = () => {
         dispatch(toglleCartOpen(false));
@@ -36,8 +57,9 @@ const Cart = () => {
 
     return (
         <>
+            {isPopupOpen && <LoginPopup onClose={closePopup} />}
             {isOpen && (
-                <div id="cart">
+                <div id="cart">                    
                     <div className="cart_head">
                         <h2>Cart</h2>
                         <div className="close_btn" onClick={handleOpenCart}><span>&times;</span></div>
@@ -70,12 +92,12 @@ const Cart = () => {
 
                                     })}                                    
                                     <p className="total">Total: {total} EUR</p>                                    
-                                    <p className="linkD" onClick={()=>handleDeleteAll()}>Delete all</p>
+                                    <p className="linkD" onClick={()=>handleDeleteAll()}>Delete all</p>                                    
                                 </div>
                             )}              
                     </div>
                 </div>
-            )}
+            )}           
         </>
     )
 }

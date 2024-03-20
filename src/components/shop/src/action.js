@@ -1,3 +1,5 @@
+import { OPEN_POPUP, CLOSE_POPUP } from './types';
+
 export const increase=()=>{
     return {
         type:'increase'
@@ -15,3 +17,15 @@ export const duplicate=()=>{
         type:'duplicate'
     }
 }
+
+export const openPopup = () => {
+  return {
+    type: OPEN_POPUP
+  };
+};
+
+export const closePopup = () => {
+  return {
+    type: CLOSE_POPUP
+  };
+};
