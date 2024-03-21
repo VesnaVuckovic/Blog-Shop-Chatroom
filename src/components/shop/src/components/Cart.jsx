@@ -11,13 +11,13 @@ const Cart = () => {
     const dispatch = useDispatch();
     const { isLoggedIn } = useSelector(state => state.auth) || {};
     const [isPopupOpen, setIsPopupOpen] = useState(true);
-    
+            
     const openPopup = () => {
-        setIsAddToCartClicked(true);
+        setIsPopupOpen(true);
     };
-    
+
     const closePopup = () => {
-        setIsAddToCartClicked(false);
+        setIsPopupOpen(false);
     };
 
     const handleAddToCart = () => {
@@ -28,6 +28,8 @@ const Cart = () => {
         dispatch(addItem({ id: itemId, quantity: 1, ...otherItemData }));
     };
 
+      
+      
     const handleOpenCart = () => {
         dispatch(toglleCartOpen(false));
     }
@@ -56,8 +58,8 @@ const Cart = () => {
     }, 0);
 
     return (
-        <>
-            {isPopupOpen && <LoginPopup onClose={closePopup} />}
+        <>    
+            {isPopupOpen && <LoginPopup onClose={closePopup} />}                
             {isOpen && (
                 <div id="cart">                    
                     <div className="cart_head">
@@ -89,15 +91,15 @@ const Cart = () => {
                                                     &times;
                                                 </div></div>
                                         )
-
                                     })}                                    
                                     <p className="total">Total: {total} EUR</p>                                    
-                                    <p className="linkD" onClick={()=>handleDeleteAll()}>Delete all</p>                                    
+                                    <p className="linkD" onClick={()=>handleDeleteAll()}>Delete all</p> 
+                                                                    
                                 </div>
                             )}              
                     </div>
                 </div>
-            )}           
+            )}                     
         </>
     )
 }

@@ -1,57 +1,111 @@
-import './App.css'; 
+import './LoginPopup.css'; 
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import handleRegister from './App';
-import './App.css';
 import {validateEmail} from './src/utils/utils'
 
-const LoginPopup = ({ onClose, onLogin }) => {
-  const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isRegistering, setIsRegistering] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(''); 
 
-  const handleLogin = () => {    
-    dispatch({ type: 'LOGIN', payload: { email, password } });
-    onLogin(); 
-  };
+const LoginPopup = () => {
+  const [firstName, setFirstName] = useState(""); 
+  const [lastName, setLastName] = useState(""); 
+  const [email, setEmail] = useState(""); 
+  const [successMessage, setSuccessMessage] = useState("");
 
-  const handleRegister = () => {    
-    dispatch({ type: 'REGISTER', payload: { email, password } });
-    onClose(); 
-  };
+  const [password, setPassword] = useState({ 
+   value: "", 
+   isTouched: false, 
+  });
 
-  const handleSubmit = () => {
-    const isValidEmail = validateEmail(email);
-    if (!isValidEmail) {
-      setError('Email nije validan!');
-      return;
-    } else {
-      setErrorMessage('');
-    }
-  };
+  const getIsFormValid = () => { 
+    return ( 
+     firstName && 
+     validateEmail(email) && 
+     password.value.length >= 8 
+    ); 
+  }; 
+ 
+  const clearForm = () => { 
+    setFirstName(""); 
+    setLastName(""); 
+    setEmail(""); 
+    setPassword({ 
+     value: "", 
+     isTouched: false, 
+    });    
+  }; 
 
-  return (
-    <div className="popup">
-      <div className="popup-content">
-        <h2>{isRegistering ? 'Create account' : 'Login'}</h2>
-        <form>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          {errorMessage && <div className="error-message">{errorMessage}</div>}       
-          <label>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <p className="hover-text" onClick={isRegistering ? handleRegister : handleLogin}>{isRegistering ? 'Create account' : 'Login'}</p>
-          <p onClick={() => setIsRegistering(!isRegistering)}>
-          {isRegistering ? 'Already have account? Login ' : 'Do not have account? Create account '}
-          <span className="hover-text">here.</span> 
-          </p>
-        </form>
-        <div className="danger" onClick={onClose}>&times;</div>
+  const handleRegister = (e) => { 
+   e.preventDefault(); 
+   setSuccessMessage(`Welcome ${values.firstName} Your registration was successful!`);    
+   clearForm(); 
+  }; 
+ 
+  return (         
+    <div className="popup-overlay">
+      <div className="popup">
+        <span className="close-btn" onClick={() => setShowPopup(false)}>X</span>
+          <form onSubmit={handleRegister}>
+            <fieldset>
+              <h2>Sign Up</h2>
+              <div className="Field">
+                <label>
+                  First name <sup>*</sup>
+                </label>
+                <input
+                  value={firstName}
+                  onChange={(e) => {
+                    setFirstName(e.target.value);
+                  }}
+                  placeholder="First name"
+                />
+              </div>
+              <div className="Field">
+                <label>Last name</label>
+                <input
+                  value={lastName}
+                  onChange={(e) => {
+                    setLastName(e.target.value);
+                  }}
+                  placeholder="Last name"
+                />
+              </div>
+              <div className="Field">
+                <label>
+                  Email address <sup>*</sup>
+                </label>
+                <input
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  placeholder="Email address"
+                />
+              </div>
+              <div className="Field">
+                <label>
+                  Password <sup>*</sup>
+                </label>
+                <input
+                  value={password.value}
+                  type="password"
+                  onChange={(e) => {
+                    setPassword({ ...password, value: e.target.value });
+                  }}
+                  onBlur={() => {
+                    setPassword({ ...password, isTouched: true });
+                  }}
+                  placeholder="Password"
+                />
+                {password.isTouched && password.value.length < 8 ? (
+                  <p className='error-message'>Password should have at least 8 characters.</p>
+                ) : null}
+              </div>
+              <button type="submit" disabled={!getIsFormValid()}>
+                Create account
+              </button>
+            </fieldset>
+          </form>        
       </div>
     </div>
-  );
-};
+    )
+}
 
 export default LoginPopup;

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './reducers/rootReducer';
-import App from './App';
+import LoginPopup from './LoginPopup';
 
 const store = configureStore({
     reducer: rootReducer
@@ -11,7 +11,7 @@ const store = configureStore({
   
 ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <LoginPopup />
     </Provider>,
     document.getElementById('root')
 );
