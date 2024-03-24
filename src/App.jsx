@@ -1,31 +1,24 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import GlobePage from './pages/GlobePage';
 import ShopPage from './pages/ShopPage';
 import HomeShop from './components/shop/src/index';
-
-
+import SignIn from './components/registration/src/client/SignIn';
+import SignUp from './components/registration/src/client/SignUp';
+import Welcome from './components/registration/src/client/Welcome';
 
 const App = () => {
   return (
     <Router>
-      
-      <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route path="/globe">
-          <GlobePage />
-        </Route>
-        <Route path="/shop">
-          <ShopPage />
-        </Route>
-        <Route path="/HomeShop">
-          <HomeShop />
-        </Route>               
-      </Switch>
-      
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/globe" element={<GlobePage />} />
+        <Route path="/shop" element={<ShopPage />} />
+        <Route path="/HomeShop" element={<HomeShop />} />
+        <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/Welcome" element={<Welcome />} />
+      </Routes>
     </Router>
   );
 };

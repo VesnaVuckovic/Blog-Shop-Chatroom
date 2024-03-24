@@ -1,4 +1,3 @@
-// src/pages/GlobePage.jsx
 import React from 'react';
 import App from '../components/globe/src/App';
 

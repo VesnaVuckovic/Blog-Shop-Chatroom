@@ -3,6 +3,8 @@ import { config } from "react-spring";
 import Carousel from "react-spring-3d-carousel";
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
+import SignIn from '../../../registration/src/client/SignIn';
+
 
 const ShopCarousel = () => {
   const [slides, setSlides] = useState([]);
@@ -34,9 +36,10 @@ const ShopCarousel = () => {
         showNavigation={true}        
         animationConfig={config.gentle}
       />  
-      <Link to="/HomeShop" className="buy-link">
+      
+      <Link to="/SignIn" className="buy-link">
         <div className="buy-button">Buy</div>
-      </Link> 
+      </Link>
     </>
   );
 };

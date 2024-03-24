@@ -3,32 +3,21 @@ import { addItem } from '../store/reducer/cartSlice';
 import { useSelector, useDispatch } from "react-redux"
 import { toglleCartOpen, increment, decrement,deleteItem,deleteAll } from "../store/reducer/cartSlice"
 import { calculatePromoPrice } from "../store/utils/calculatePrice";
-import LoginPopup from '../../../registration/LoginPopup';
+
 
 const Cart = () => {
     const { isOpen, cartItems } = useSelector(state => state.cart);
     const numberOfItems = cartItems.length;
     const dispatch = useDispatch();
-    const { isLoggedIn } = useSelector(state => state.auth) || {};
-    const [isPopupOpen, setIsPopupOpen] = useState(true);
-            
-    const openPopup = () => {
-        setIsPopupOpen(true);
-    };
-
-    const closePopup = () => {
-        setIsPopupOpen(false);
-    };
-
+    const { isLoggedIn } = useSelector(state => state.auth) || {};       
+    
     const handleAddToCart = () => {
         if (!isLoggedIn) {
             dispatch({ type: OPEN_POPUP });
             return;
         }
         dispatch(addItem({ id: itemId, quantity: 1, ...otherItemData }));
-    };
-
-      
+    };      
       
     const handleOpenCart = () => {
         dispatch(toglleCartOpen(false));
@@ -58,8 +47,7 @@ const Cart = () => {
     }, 0);
 
     return (
-        <>    
-            {isPopupOpen && <LoginPopup onClose={closePopup} />}                
+        <>                            
             {isOpen && (
                 <div id="cart">                    
                     <div className="cart_head">
