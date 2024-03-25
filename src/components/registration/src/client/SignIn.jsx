@@ -37,7 +37,7 @@ function SignIn () {
         }
       })         
       .catch(error => {
-        console.error('An error occurred:', error);
+        // console.error('An error occurred:', error);
         setErrors({ ...errors, sign: 'An error occurred. Please try again later.' });
       });        
   };
@@ -62,9 +62,9 @@ function SignIn () {
   };
 
   return (
-    <form onSubmit={handleSignIn}>
+    <form onSubmit={handleSignIn} className="sign-in-form">
       <h3>Sign In</h3>
-      <div className="mb-3">
+      <div className="form-group">
         <label>Email address</label>
         <input
           type="email"
@@ -75,7 +75,7 @@ function SignIn () {
         />
         {errors.email && <div className="error">{errors.email}</div>}
       </div>
-      <div className="mb-3">
+      <div className="form-group">
         <label>Password</label>
         <input
           type="password"

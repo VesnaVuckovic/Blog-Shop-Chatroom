@@ -39,11 +39,11 @@ function SignUp () {
       } else {
         const errorData = await response.json();
         console.error('Error registering user:', errorData);
-        alert('An error occurred during registration. Please try again later.');
+        // alert('An error occurred during registration. Please try again later.');
       }
     } catch (error) {
       console.error('Error registering user:', error);
-      alert('An error occurred during registration. Please try again later.');
+      // alert('An error occurred during registration. Please try again later.');
     }
     localStorage.setItem ('firstName', firstName);
     navigate ('/welcome');
@@ -79,9 +79,9 @@ function SignUp () {
   };
 
   return (
-    <form onSubmit={handleSignUp}>
+    <form onSubmit={handleSignUp} className="sign-in-form">
       <h3>Sign Up</h3>
-      <div className="mb-3">
+      <div className="form-group">
         <label>First name</label>
         <input
           type="text"
@@ -92,7 +92,7 @@ function SignUp () {
         />
         {errors.firstName && <div className="error">{errors.firstName}</div>}
       </div>
-      <div className="mb-3">
+      <div className="form-group">
         <label>Last name</label>
         <input
           type="text"
@@ -103,7 +103,7 @@ function SignUp () {
         />
         {errors.lastName && <div className="error">{errors.lastName}</div>}
       </div>
-      <div className="mb-3">
+      <div className="form-group">
         <label>Email address</label>
         <input
           type="email"
@@ -114,7 +114,7 @@ function SignUp () {
         />
         {errors.email && <div className="error">{errors.email}</div>}
       </div>
-      <div className="mb-3">
+      <div className="form-group">
         <label>Password</label>
         <input
           type="password"

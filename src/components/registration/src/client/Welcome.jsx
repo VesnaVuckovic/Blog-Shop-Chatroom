@@ -15,15 +15,14 @@ function Welcome() {
   }, []);
 
   return (
-    <div>
+    <div className="welcome-message">
       <h2>Welcome, {firstName}!</h2>
       <p>You have successfully logged in or registered.</p>
       <p>Now you can:</p>
-      <div className="button-container">
-        <Link to="/HomeShop">Buy</Link>
-        <p className="separator">or</p>
-        <button className="btn btn-primary">Chat</button>
-      </div>
+      <button className="btn btn-primary"><Link to="/HomeShop">Buy</Link></button>
+      <p className="separator">or</p>
+      <button className="btn btn-primary">Chat</button>
+      
     </div>
   );
 }
