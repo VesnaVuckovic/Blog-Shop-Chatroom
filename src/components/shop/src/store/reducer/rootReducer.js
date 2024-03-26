@@ -5,7 +5,7 @@ import cartSlice from './cartSlice';
 
 const rootReducer = combineReducers({
   popup: popupReducer,
-  cart: cartSlice  
+  cart: cartSlice    
 });
 
 export default rootReducer;

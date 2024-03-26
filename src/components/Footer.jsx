@@ -7,7 +7,7 @@ const Footer = () => {
     return (
       <footer>
         <div className="contact-form">
-            <ContactForm/>
+          <ContactForm/>
         </div>   
         
         <div className="social-icons">

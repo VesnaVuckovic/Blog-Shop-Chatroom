@@ -5,12 +5,13 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Welcome from './Welcome';
 
+
 function App() {
   return (
     <Router>
       <div className="auth-wrapper">
         <div className="auth-inner">
-          <Routes>
+          <Routes>            
             <Route path="/" element={<SignIn />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />

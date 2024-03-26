@@ -29,3 +29,8 @@ export const closePopup = () => {
     type: CLOSE_POPUP
   };
 };
+
+export const setFilter = (filterType, filterValue) => ({
+  type: 'SET_FILTER',
+  payload: { filterType, filterValue }
+});

@@ -3,6 +3,8 @@ import { addItem } from '../store/reducer/cartSlice';
 import { useSelector, useDispatch } from "react-redux"
 import { toglleCartOpen, increment, decrement,deleteItem,deleteAll } from "../store/reducer/cartSlice"
 import { calculatePromoPrice } from "../store/utils/calculatePrice";
+import PaymentPage from './PaymentPage';
+import { Link } from 'react-router-dom';
 
 
 const Cart = () => {
@@ -79,10 +81,12 @@ const Cart = () => {
                                                     &times;
                                                 </div></div>
                                         )
-                                    })}                                    
-                                    <p className="total">Total: {total} EUR</p>                                    
-                                    <p className="linkD" onClick={()=>handleDeleteAll()}>Delete all</p> 
-                                                                    
+                                    })}   
+                                    <div className='cart-bottom'>                                 
+                                        <p className="total">Total: {total} EUR</p>                                    
+                                        <p className="linkD" onClick={()=>handleDeleteAll()}>Delete all</p> 
+                                        <Link to="/PaymentPage" className="btn-payment">Pay</Link>
+                                    </div>                            
                                 </div>
                             )}              
                     </div>

@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 const ShopPage = () => {
 
     return (    
-      <ShopCarousel />    
+      <div id="shop-container" className="shop-container">
+      <ShopCarousel /> 
+      </div>   
   );
 }
 

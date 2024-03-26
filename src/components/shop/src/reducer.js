@@ -1,5 +1,10 @@
 const initialState = {
-    count: 0
+    count: 0,
+    filters: {
+        type: null,
+        color: null,
+        size: null
+      },
 }
 
 const reducer = (state = initialState, action) => {
@@ -20,6 +25,14 @@ const reducer = (state = initialState, action) => {
                     count: state.count*2
                 }
             }
+            case 'SET_FILTER':
+                return {
+                  ...state,
+                  filters: {
+                    ...state.filters,
+                    [action.payload.filterType]: action.payload.filterValue
+                  }
+                };              
         default:
         return state;
     }

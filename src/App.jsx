@@ -6,11 +6,12 @@ import HomeShop from './components/shop/src/index';
 import SignIn from './components/registration/src/client/SignIn';
 import SignUp from './components/registration/src/client/SignUp';
 import Welcome from './components/registration/src/client/Welcome';
+import PaymentPage from './components/shop/src/components/PaymentPage';
 
 const App = () => {
   return (
     <Router>
-      <Routes>
+      <Routes>        
         <Route path="/" element={<HomePage />} />
         <Route path="/globe" element={<GlobePage />} />
         <Route path="/shop" element={<ShopPage />} />
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Welcome" element={<Welcome />} />
+        <Route path="/PaymentPage" element={<PaymentPage/>}/>
       </Routes>
     </Router>
   );

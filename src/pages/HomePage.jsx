@@ -4,8 +4,11 @@ import Footer from '../components/Footer';
 import Globe from './GlobePage';
 import Chatroom from '../components/Chatroom';
 import ShopPage from './ShopPage';
+import { animateScroll as scroll } from 'react-scroll';
+
 
 const HomePage = () => {
+  
   return (
     <div className='wrapper'>
       <div className="main-header"><Header /></div>
