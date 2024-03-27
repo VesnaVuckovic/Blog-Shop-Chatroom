@@ -1,4 +1,4 @@
-import { OPEN_POPUP, CLOSE_POPUP } from './types';
+// import { OPEN_POPUP, CLOSE_POPUP } from './types';
 
 export const increase=()=>{
     return {
