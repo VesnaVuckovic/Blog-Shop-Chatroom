@@ -18,17 +18,17 @@ export const duplicate=()=>{
     }
 }
 
-export const openPopup = () => {
-  return {
-    type: OPEN_POPUP
-  };
-};
+// export const openPopup = () => {
+//   return {
+//     type: OPEN_POPUP
+//   };
+// };
 
-export const closePopup = () => {
-  return {
-    type: CLOSE_POPUP
-  };
-};
+// export const closePopup = () => {
+//   return {
+//     type: CLOSE_POPUP
+//   };
+// };
 
 export const setFilter = (filterType, filterValue) => ({
   type: 'SET_FILTER',

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import popupReducer from './popupReducer';
+// import popupReducer from './popupReducer';
 import cartSlice from './cartSlice';
 
 
 const rootReducer = combineReducers({
-  popup: popupReducer,
+  // popup: popupReducer,
   cart: cartSlice    
 });
 

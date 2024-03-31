@@ -54,7 +54,7 @@ $box-color: #445544 0px 10px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* Postavi z-index manji od header-a kako bi filters bio ispod njega */
+  z-index: 999;
 }
 
 .filters select {

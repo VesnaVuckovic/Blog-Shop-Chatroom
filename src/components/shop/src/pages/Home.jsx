@@ -57,10 +57,11 @@ const Home = () => {
             [filterType]: filterValue
         }));
     };
-
+    console.log(filters);
+    console.log(filteredData);
     return (
         <div>
-            <Header types={types} colors={colors} onFilterChange={handleFilterChange} />
+            <Header types={types} colors={colors} onFilterChange={handleFilterChange} />         
             <section>
                 <div className="container">
                     <div className="home_content">

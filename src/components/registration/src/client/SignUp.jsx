@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigate, useRoutes} from 'react-router-dom';
 import './App.css';
-import {validateEmail} from '../server/utils/utils';
-import {validateFirstName} from '../server/utils/utils';
-import {validateLastName} from '../server/utils/utils';
-import {validatePassword} from '../server/utils/utils';
+import {validateEmail, validateFirstName, validateLastName, validatePassword} from '../utils/utils';
 import { Link } from 'react-router-dom';
 
 function SignUp () {
@@ -25,7 +22,7 @@ function SignUp () {
     }
 
     try {
-      const response = await fetch('/api/register', {
+      const response = await fetch('http://localhost:3000/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,12 +35,10 @@ function SignUp () {
         navigate('/welcome');
       } else {
         const errorData = await response.json();
-        console.error('Error registering user:', errorData);
-        // alert('An error occurred during registration. Please try again later.');
+        console.error('Error registering user:', errorData);        
       }
     } catch (error) {
-      console.error('Error registering user:', error);
-      // alert('An error occurred during registration. Please try again later.');
+      console.error('Error registering user:', error);     
     }
     localStorage.setItem ('firstName', firstName);
     navigate ('/welcome');

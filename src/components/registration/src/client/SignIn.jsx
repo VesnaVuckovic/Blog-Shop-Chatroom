@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import {validateEmail} from '../server/utils/utils';
+import {validateEmail} from '../utils/utils';
 import './App.css';
 
 function SignIn () {
@@ -17,6 +17,10 @@ function SignIn () {
     if (!isFormValid) {
       return;
     }
+
+    console.log("Email:", email);
+    console.log("Password:", password);
+
 
     fetch ('/api/login', {
       method: 'POST',
@@ -36,8 +40,7 @@ function SignIn () {
           }
         }
       })         
-      .catch(error => {
-        // console.error('An error occurred:', error);
+      .catch(error => {        
         setErrors({ ...errors, sign: 'An error occurred. Please try again later.' });
       });        
   };

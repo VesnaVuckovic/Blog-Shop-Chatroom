@@ -2,7 +2,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { toglleCartOpen } from "../store/reducer/cartSlice";
 import { setFilter } from '../action';
 
-const Header = ({ types, colors }) => {
+const Header = ({ types, colors, onFilterChange }) => {
     const dispatch=useDispatch();
     const {cartItems}=useSelector((state)=> state.cart);
     const counter=cartItems.length;
@@ -15,6 +15,7 @@ const Header = ({ types, colors }) => {
         console.log('Filter type:', filterType);
         console.log('Filter value:', filterValue);
         dispatch(setFilter(filterType, filterValue));
+        onFilterChange(filterType, filterValue); 
     };
 
     return (

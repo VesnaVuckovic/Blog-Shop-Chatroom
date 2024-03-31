@@ -1,24 +1,24 @@
-import { OPEN_POPUP, CLOSE_POPUP } from './types';
+// import { OPEN_POPUP, CLOSE_POPUP } from './types';
 
-const initialState = {
-  isPopupOpen: false
-};
+// const initialState = {
+//   isPopupOpen: false
+// };
 
-const popupReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case OPEN_POPUP:
-      return {
-        ...state,
-        isPopupOpen: true
-      };
-    case CLOSE_POPUP:
-      return {
-        ...state,
-        isPopupOpen: false
-      };
-    default:
-      return state;
-  }
-};
+// const popupReducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case OPEN_POPUP:
+//       return {
+//         ...state,
+//         isPopupOpen: true
+//       };
+//     case CLOSE_POPUP:
+//       return {
+//         ...state,
+//         isPopupOpen: false
+//       };
+//     default:
+//       return state;
+//   }
+// };
 
-export default popupReducer;
+// export default popupReducer;

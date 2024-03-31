@@ -29,7 +29,6 @@ const Cart = () => {
         dispatch(increment(id));
     }
 
-
     const handleDeleteAll=()=>{
         dispatch(deleteAll());
     }
